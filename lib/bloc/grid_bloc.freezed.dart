@@ -19,19 +19,19 @@ mixin _$GridEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function(String movieQuery) searchMovie,
+    required TResult Function(String searchKey) searchMovie,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function(String movieQuery)? searchMovie,
+    TResult? Function(String searchKey)? searchMovie,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function(String movieQuery)? searchMovie,
+    TResult Function(String searchKey)? searchMovie,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -112,7 +112,7 @@ class _$Initialized implements Initialized {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function(String movieQuery) searchMovie,
+    required TResult Function(String searchKey) searchMovie,
   }) {
     return initialized();
   }
@@ -121,7 +121,7 @@ class _$Initialized implements Initialized {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function(String movieQuery)? searchMovie,
+    TResult? Function(String searchKey)? searchMovie,
   }) {
     return initialized?.call();
   }
@@ -130,7 +130,7 @@ class _$Initialized implements Initialized {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function(String movieQuery)? searchMovie,
+    TResult Function(String searchKey)? searchMovie,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -181,7 +181,7 @@ abstract class _$$SearchMovieCopyWith<$Res> {
           _$SearchMovie value, $Res Function(_$SearchMovie) then) =
       __$$SearchMovieCopyWithImpl<$Res>;
   @useResult
-  $Res call({String movieQuery});
+  $Res call({String searchKey});
 }
 
 /// @nodoc
@@ -195,12 +195,12 @@ class __$$SearchMovieCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? movieQuery = null,
+    Object? searchKey = null,
   }) {
     return _then(_$SearchMovie(
-      movieQuery: null == movieQuery
-          ? _value.movieQuery
-          : movieQuery // ignore: cast_nullable_to_non_nullable
+      searchKey: null == searchKey
+          ? _value.searchKey
+          : searchKey // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -209,14 +209,14 @@ class __$$SearchMovieCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SearchMovie implements SearchMovie {
-  const _$SearchMovie({required this.movieQuery});
+  const _$SearchMovie({required this.searchKey});
 
   @override
-  final String movieQuery;
+  final String searchKey;
 
   @override
   String toString() {
-    return 'GridEvent.searchMovie(movieQuery: $movieQuery)';
+    return 'GridEvent.searchMovie(searchKey: $searchKey)';
   }
 
   @override
@@ -224,12 +224,12 @@ class _$SearchMovie implements SearchMovie {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SearchMovie &&
-            (identical(other.movieQuery, movieQuery) ||
-                other.movieQuery == movieQuery));
+            (identical(other.searchKey, searchKey) ||
+                other.searchKey == searchKey));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, movieQuery);
+  int get hashCode => Object.hash(runtimeType, searchKey);
 
   @JsonKey(ignore: true)
   @override
@@ -241,29 +241,29 @@ class _$SearchMovie implements SearchMovie {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function(String movieQuery) searchMovie,
+    required TResult Function(String searchKey) searchMovie,
   }) {
-    return searchMovie(movieQuery);
+    return searchMovie(searchKey);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function(String movieQuery)? searchMovie,
+    TResult? Function(String searchKey)? searchMovie,
   }) {
-    return searchMovie?.call(movieQuery);
+    return searchMovie?.call(searchKey);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function(String movieQuery)? searchMovie,
+    TResult Function(String searchKey)? searchMovie,
     required TResult orElse(),
   }) {
     if (searchMovie != null) {
-      return searchMovie(movieQuery);
+      return searchMovie(searchKey);
     }
     return orElse();
   }
@@ -301,9 +301,9 @@ class _$SearchMovie implements SearchMovie {
 }
 
 abstract class SearchMovie implements GridEvent {
-  const factory SearchMovie({required final String movieQuery}) = _$SearchMovie;
+  const factory SearchMovie({required final String searchKey}) = _$SearchMovie;
 
-  String get movieQuery;
+  String get searchKey;
   @JsonKey(ignore: true)
   _$$SearchMovieCopyWith<_$SearchMovie> get copyWith =>
       throw _privateConstructorUsedError;

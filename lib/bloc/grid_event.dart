@@ -4,6 +4,6 @@ part of 'grid_bloc.dart';
 class GridEvent with _$GridEvent {
   const factory GridEvent.initialized() = Initialized;
   const factory GridEvent.searchMovie({
-    required String movieQuery,
+    required String searchKey,
   }) = SearchMovie;
 }

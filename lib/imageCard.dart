@@ -3,13 +3,31 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
 class ImageCard extends StatelessWidget {
-  ImageCard({super.key, required this.imageUrl});
+  ImageCard({super.key, required this.imageUrl, required this.ProfileName});
   final String imageUrl;
+  final String ProfileName;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(8),
       child: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              ProfileName,
+              style: TextStyle(
+                  color: Colors.blueGrey,
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold),
+            ),
+            IconButton(
+                color: Colors.blue,
+                onPressed: () {},
+                icon: Icon(Icons.thumb_up))
+          ],
+        ),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(7),
             image: DecorationImage(
