@@ -2,6 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meta/meta.dart';
+import 'package:pastebin/Models/profileimage/profile_image.dart';
+import 'package:pastebin/Models/profileimage/profileimage.dart';
 import 'package:pastebin/infrastructure/image_repo.dart';
 import 'package:injectable/injectable.dart';
 import '../Models/profileimage/user.dart';
@@ -29,7 +31,7 @@ class GridBloc extends Bloc<GridEvent, GridState> {
       print(result);
       final _state = result.fold((l) {
         return GridState(
-          SearchResultKey: [],
+          SearchResultKey: state.SearchResultKey,
           idleList: [],
           isLoading: false,
           isError: true,

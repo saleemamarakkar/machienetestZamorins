@@ -311,7 +311,7 @@ abstract class SearchMovie implements GridEvent {
 
 /// @nodoc
 mixin _$GridState {
-  List<User> get SearchResultKey => throw _privateConstructorUsedError;
+  List<Profileimage> get SearchResultKey => throw _privateConstructorUsedError;
   List<User> get idleList => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isError => throw _privateConstructorUsedError;
@@ -327,7 +327,7 @@ abstract class $GridStateCopyWith<$Res> {
       _$GridStateCopyWithImpl<$Res, GridState>;
   @useResult
   $Res call(
-      {List<User> SearchResultKey,
+      {List<Profileimage> SearchResultKey,
       List<User> idleList,
       bool isLoading,
       bool isError});
@@ -355,7 +355,7 @@ class _$GridStateCopyWithImpl<$Res, $Val extends GridState>
       SearchResultKey: null == SearchResultKey
           ? _value.SearchResultKey
           : SearchResultKey // ignore: cast_nullable_to_non_nullable
-              as List<User>,
+              as List<Profileimage>,
       idleList: null == idleList
           ? _value.idleList
           : idleList // ignore: cast_nullable_to_non_nullable
@@ -380,7 +380,7 @@ abstract class _$$_GridStateCopyWith<$Res> implements $GridStateCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {List<User> SearchResultKey,
+      {List<Profileimage> SearchResultKey,
       List<User> idleList,
       bool isLoading,
       bool isError});
@@ -406,7 +406,7 @@ class __$$_GridStateCopyWithImpl<$Res>
       SearchResultKey: null == SearchResultKey
           ? _value._SearchResultKey
           : SearchResultKey // ignore: cast_nullable_to_non_nullable
-              as List<User>,
+              as List<Profileimage>,
       idleList: null == idleList
           ? _value._idleList
           : idleList // ignore: cast_nullable_to_non_nullable
@@ -427,16 +427,16 @@ class __$$_GridStateCopyWithImpl<$Res>
 
 class _$_GridState implements _GridState {
   const _$_GridState(
-      {required final List<User> SearchResultKey,
+      {required final List<Profileimage> SearchResultKey,
       required final List<User> idleList,
       required this.isLoading,
       required this.isError})
       : _SearchResultKey = SearchResultKey,
         _idleList = idleList;
 
-  final List<User> _SearchResultKey;
+  final List<Profileimage> _SearchResultKey;
   @override
-  List<User> get SearchResultKey {
+  List<Profileimage> get SearchResultKey {
     if (_SearchResultKey is EqualUnmodifiableListView) return _SearchResultKey;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_SearchResultKey);
@@ -490,13 +490,13 @@ class _$_GridState implements _GridState {
 
 abstract class _GridState implements GridState {
   const factory _GridState(
-      {required final List<User> SearchResultKey,
+      {required final List<Profileimage> SearchResultKey,
       required final List<User> idleList,
       required final bool isLoading,
       required final bool isError}) = _$_GridState;
 
   @override
-  List<User> get SearchResultKey;
+  List<Profileimage> get SearchResultKey;
   @override
   List<User> get idleList;
   @override

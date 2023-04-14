@@ -43,18 +43,12 @@ class ImageGrid extends StatelessWidget {
         return GridView.count(
           crossAxisCount: 2,
           children: List.generate(state.SearchResultKey.length, (index) {
-            print("\n   \n \ninside grid generator$state");
-            final user = state.SearchResultKey[index];
-            print("user instance ----$user");
+            final result =
+                state.SearchResultKey[index].user!.profileImage!.medium;
+            // final stateString = state.toString();
+            print("\n   \n \ninside grid generator$result");
 
-            // final profileimage = user.name;
-
-            //print("profile image=======$profileimage");
-            //  print(state.SearchResultKey[index].profileImage!.small!);
-            return ImageCard(imageUrl: ""
-                //  state.SearchResultKey[index].profileImage!.small! ??
-                //     "No small image",
-                );
+            return ImageCard(imageUrl: result!);
           }),
         );
       },
