@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meta/meta.dart';
+import 'package:pastebin/Models/UserSearchModel.dart';
 import 'package:pastebin/Models/profileimage/profile_image.dart';
 import 'package:pastebin/Models/profileimage/profileimage.dart';
 import 'package:pastebin/infrastructure/image_repo.dart';
@@ -19,7 +20,7 @@ class GridBloc extends Bloc<GridEvent, GridState> {
   GridBloc(this.imageRepo) : super(GridState.initial()) {
     on<Initialized>((event, emit) async {
       // emit(GridState(
-      //   SearchResultKey: [],
+      //  SearchResultKey: [],
       //   idleList: state.idleList,
       //   isLoading: false,
       //   isError: false,
@@ -31,21 +32,43 @@ class GridBloc extends Bloc<GridEvent, GridState> {
       print(result);
       final _state = result.fold((l) {
         return GridState(
-          SearchResultKey: state.SearchResultKey,
-          idleList: [],
+          imageLoad: [],
+          searchList: [],
           isLoading: false,
           isError: true,
         );
       }, (r) {
         return GridState(
-          SearchResultKey: r,
-          idleList: state.idleList,
+          imageLoad: r,
+          searchList: state.searchList,
           isLoading: false,
           isError: false,
         );
       });
       emit(_state);
       // TODO: implement event handler
+    });
+    on<SearchMovie>((event, emit) async {
+      emit(GridState(
+          imageLoad: [],
+          searchList: state.searchList,
+          isLoading: false,
+          isError: false));
+      //String serachResult="";
+
+      final serachResult =
+          await imageRepo.getSearchResult(searchKey: event.searchKey);
+
+      print("@@@@@@@ inside bloc of search with key $serachResult");
+
+      final _state = serachResult.fold((l) {
+        return GridState(
+            imageLoad: [], searchList: [], isLoading: false, isError: true);
+      }, (r) {
+        return GridState(
+            imageLoad: [], searchList: r, isLoading: false, isError: false);
+      });
+      emit(_state);
     });
   }
 }

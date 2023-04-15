@@ -6,8 +6,10 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pastebin/bloc/grid_bloc.dart';
 import 'package:pastebin/debounce/debounce.dart';
+import 'package:pastebin/filter_screen.dart';
 import 'package:pastebin/full_screen.dart';
 import 'package:pastebin/imageCard.dart';
+import 'package:pastebin/image_grid.dart';
 
 String searchkey = "";
 
@@ -26,7 +28,13 @@ class GridviewTest extends StatelessWidget {
           CupertinoSearchTextField(
             onChanged: (value) {
               if (value.isNotEmpty) {
-                searchkey = value;
+                _debouncer.run(() {
+                  BlocProvider.of<GridBloc>(context)
+                      .add(GridEvent.searchMovie(searchKey: value));
+                  // Navigator.of(context).push(MaterialPageRoute(
+                  //   builder: (context) => FilterScreen(filterText: value),
+                  // ));
+                });
               }
             },
           ),
@@ -35,49 +43,6 @@ class GridviewTest extends StatelessWidget {
           ),
         ]),
       ),
-    );
-  }
-}
-
-class ImageGrid extends StatelessWidget {
-  ImageGrid({super.key, this.serachKey});
-
-  String? serachKey = "";
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<GridBloc, GridState>(
-      builder: (context, state) {
-        return OrientationBuilder(
-          builder: (context, orientation) {
-            return GridView.count(
-              crossAxisCount: orientation == Orientation.portrait ? 2 : 4,
-              children: List.generate(state.SearchResultKey.length, (index) {
-                final image =
-                    state.SearchResultKey[index].user!.profileImage!.medium;
-
-                final name = state.SearchResultKey[index].user!.name;
-
-                // final stateString = state.toString();
-                print("\n   \n \ninside grid generator$image");
-
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (ctx) => FullScreen(
-                              image: image,
-                            )));
-                  },
-                  child: ImageCard(
-                    imageUrl: image!,
-                    ProfileName: name!,
-                  ),
-                );
-              }),
-            );
-          },
-        );
-      },
     );
   }
 }
